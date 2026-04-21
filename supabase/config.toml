@@ -166,11 +166,15 @@ additional_redirect_urls = [
   "http://localhost:8008/_synapse/client/oidc/callback",
   "http://127.0.0.1:8008/_synapse/client/oidc/callback",
   "https://127.0.0.1:3000",
-  # Third Room (Hydrogen OIDC): redirect_uri is `${origin}/` — must match exactly (trailing slash).
+  # Third Room (Hydrogen OIDC): redirect_uri is `${origin}/` by default; register BOTH slash variants on the OAuth App if unsure.
   "https://thirdroom.castalia.institute/",
+  "https://thirdroom.castalia.institute",
   "https://inquiryinstitute.github.io/thirdroom/",
+  "https://inquiryinstitute.github.io/thirdroom",
   "http://localhost:3000/",
+  "http://localhost:3000",
   "http://127.0.0.1:3000/",
+  "http://127.0.0.1:3000",
 ]
 # How long tokens are valid for, in seconds. Defaults to 3600 (1 hour), maximum 604,800 (1 week).
 jwt_expiry = 3600

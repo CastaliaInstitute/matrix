@@ -159,17 +159,19 @@ You should see **`org.matrix.msc2965.authentication.issuer`** alongside **`m.hom
 
 1. Open **Supabase Dashboard** → your project → **Authentication** → **OAuth Apps** (under *Manage*).
 2. Select the **public** client whose **Client ID** equals **`VITE_SUPABASE_OIDC_CLIENT_ID`** / Synapse **`oidc_providers.client_id`** (UUID, not the anon JWT).
-3. Under **Redirect URIs**, add **every** URL Third Room will send — **exact** string match (scheme, host, path, trailing slash):
+3. Under **Redirect URIs**, add **every** URL Third Room might use — Supabase OAuth Apps require **exact** matches (no wildcards). Add **both** trailing-slash and no-slash forms so a small client/build mismatch cannot cause **`invalid redirect_uri`**:
 
    - `https://thirdroom.castalia.institute/`
-   - `https://inquiryinstitute.github.io/thirdroom/` (GitHub Pages default URL, if used)
-   - `http://localhost:3000/`
-   - `http://127.0.0.1:3000/`
+   - `https://thirdroom.castalia.institute`
+   - `https://inquiryinstitute.github.io/thirdroom/` (GitHub Pages)
+   - `https://inquiryinstitute.github.io/thirdroom`
+   - `http://localhost:3000/` and `http://localhost:3000`
+   - `http://127.0.0.1:3000/` and `http://127.0.0.1:3000`
 
 4. Keep Synapse’s callback on the **same** client if you reuse one app:  
    `https://matrix.castalia.institute/_synapse/client/oidc/callback`
 
-Third Room builds `redirect_uri` as **`${window.location.origin}/`** (always a **trailing slash**). Do not register only `https://thirdroom.castalia.institute` without `/` unless you change the app.
+Third Room’s `MockRouter` uses **`${window.location.origin}/`** (path **`/`**). If you still see **`invalid redirect_uri`**, open the failing **`authorize`** request in DevTools → copy the **`redirect_uri`** query value (URL-decoded) and paste that **exact** string into **Redirect URIs** on this OAuth App.
 
 ### 6c — Third Room client env
 
