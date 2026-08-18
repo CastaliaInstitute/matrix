@@ -1,0 +1,6 @@
+# matrix.castalia.institute is backend infrastructure, not content.
+# Indexing an auth surface / headless CMS / TTS endpoint is a needless
+# security surface and spends crawl budget that belongs on
+# https://cyc.castalia.institute and https://castalia.institute.
+User-agent: *
+Disallow: /
