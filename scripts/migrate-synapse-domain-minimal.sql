@@ -5,12 +5,12 @@
 
 BEGIN;
 
-UPDATE access_tokens SET user_id = replace(user_id, 'matrix.inquiry.institute', 'matrix.castalia.institute')
-  WHERE user_id LIKE '%matrix.inquiry.institute%';
-UPDATE devices SET user_id = replace(user_id, 'matrix.inquiry.institute', 'matrix.castalia.institute')
-  WHERE user_id LIKE '%matrix.inquiry.institute%';
-UPDATE users SET name = replace(name, 'matrix.inquiry.institute', 'matrix.castalia.institute')
-  WHERE name LIKE '%matrix.inquiry.institute%';
+UPDATE access_tokens SET user_id = replace(user_id, 'matrix.castalia.institute', 'matrix.castalia.institute')
+  WHERE user_id LIKE '%matrix.castalia.institute%';
+UPDATE devices SET user_id = replace(user_id, 'matrix.castalia.institute', 'matrix.castalia.institute')
+  WHERE user_id LIKE '%matrix.castalia.institute%';
+UPDATE users SET name = replace(name, 'matrix.castalia.institute', 'matrix.castalia.institute')
+  WHERE name LIKE '%matrix.castalia.institute%';
 
 -- Add more UPDATEs for any table with user_id rows (see information_schema) if your DB is larger.
 

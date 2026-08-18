@@ -19,7 +19,7 @@ if [[ -n "${INQUIRY_INSTITUTE_DIR:-}" ]]; then
   _II_DIR="$(cd "${INQUIRY_INSTITUTE_DIR}" && pwd)"
 else
   _II_DIR=""
-  for _cand in "${_MATRIX_ROOT}/../Inquiry.Institute" "${_MATRIX_ROOT}/../inquiry.institute"; do
+  for _cand in "${_MATRIX_ROOT}/../Inquiry.Institute" "${_MATRIX_ROOT}/../castalia.institute"; do
     if [[ -d "${_cand}" ]]; then
       _II_DIR="$(cd "${_cand}" && pwd)"
       break
